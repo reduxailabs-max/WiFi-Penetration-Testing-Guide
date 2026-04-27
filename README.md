@@ -1,174 +1,222 @@
-# WiFi Penetration Testing Materials
+# WiFi Penetration Testing Guide
 
-Comprehensive toolkit for authorized wireless network security assessments.
+> **The most comprehensive, practical WiFi security testing tutorial available.**
 
----
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Stars](https://img.shields.io/github/stars/yourusername/WiFi-Penetration-Testing-Guide)](https://github.com/yourusername/WiFi-Penetration-Testing-Guide/stargazers)
 
-## Quick Start
-
-1. **Discovery Phase** - Run on target network:   ```bash   ./network-recon.sh   ```   This creates timestamped output directory with reconnaissance data.
-
-2. **Diagram Generation** - After reconnaissance:   ```bash   ./diagram-generator.sh network-recon-<timestamp>   ```   Generates `network-diagram.md` with topology visualization.
-
-3. **Pentest Execution** - If authorized for testing:   ```bash   sudo ./pentest-methodology.sh wlan0   ```
+A complete, three-tier tutorial for wireless network security assessment. From beginner fundamentals to advanced exploitation techniques - with synthetic practice materials for hands-on learning without live targets.
 
 ---
 
-## File Structure
+## 🎯 What's Inside
 
-```
-wifi/
-├── wifi-pentest-guide.md      # Complete WiFi pentest theory & reference
-├── network-recon.sh           # Systematic network enumeration script
-├── pentest-methodology.sh     # Full pentest methodology script
-├── diagram-generator.sh       # Analyzes recon data, creates diagrams
-└── README.md                  # This file
-```
+### Three Complete Learning Tracks
 
----
+| Tier | Modules | Focus | Time |
+|------|---------|-------|------|
+| **Beginner** | 6 modules | WPA2, WPS, basic reconnaissance | 2-3 weeks |
+| **Intermediate** | 6 modules | Enterprise WiFi, EAP attacks, PMKID | 3-4 weeks |
+| **Advanced** | 7 modules | WPA3 DragonBlood, WiFi 6/7, SDR attacks | 4-6 weeks |
 
-## Modules
+### Key Features
 
-### 1. wifi-pentest-guide.md
-Core reference covering:
-- **802.11 Frame Types**: Management, Control, Data frames
-- **Attack Vectors**: Network, Client, Protocol, Physical layers
-- **Tool Arsenal**: aircrack-ng, hashcat, reaver, etc.
-- **Methodologies**: WPA2/3, WPS, PMKID attack chains
-
-### 2. network-recon.sh
-5-phase systematic discovery:
-| Phase | Focus | Output |
-|-------|-------|----------|
-| 1 | Local host config | `phase1-local.txt` |
-| 2 | Wireless discovery | `phase2-wireless.txt`, `phase2-scan*.csv` |
-| 3 | VLAN/segmentation | `phase3-segmentation.txt` |
-| 4 | Gateway/DHCP | `phase4-gateway.txt` |
-| 5 | Service discovery | `phase5-services.txt` |
-
-### 3. pentest-methodology.sh
-Complete authorized pentest workflow:
-- Environment preparation
-- Monitor mode activation
-- Network discovery
-- Router/gateway discovery
-- Attack execution (requires explicit authorization)
-- Documentation generation
-
-### 4. diagram-generator.sh
-Consumes reconnaissance output and generates:
-- ASCII topology diagrams
-- Interface inventory tables
-- Wireless AP catalog
-- VLAN analysis
-- Attack surface mapping
+- ✅ **Zero History** - Purely practical, no historical fluff
+- ✅ **Maximum Detail** - Every command with all flags documented
+- ✅ **Black & White Hat** - Both attack and defense perspectives
+- ✅ **Synthetic Materials** - Practice without hardware or live targets
+- ✅ **PoC Scripts** - Ready-to-use automation scripts
+- ✅ **CVE Coverage** - Latest vulnerabilities included (2024-2025)
 
 ---
 
-## Legal Notice
-
-**These tools are for authorized security testing only.**
-
-Required before use:
-1. Written authorization from network owner
-2. Defined scope and IP ranges
-3. Approved testing window
-4. Acknowledgment of safety implications
-
-Unauthorized access to computer networks is illegal under most jurisdictions including the Computer Fraud and Abuse Act (US), Computer Misuse Act (UK), and similar statutes worldwide.
-
----
-
-## Generated Diagrams
-
-After running `./network-recon.sh`, the following visualizations are created:
-
-- **Network Topology**: Hierarchical view of uplink → gateway → switches → clients
-- **VLAN Layout**: Discovered broadcast domains and segmentation
-- **Wireless Map**: AP locations, channels, encryption types
-- **Attack Surface**: Identified vulnerabilities mapped to targets
-
----
-
-## For Router Discovery (Your Original Request)
-
-To systematically find the "hidden" router:
+## 📚 Quick Start
 
 ```bash
-# Step 1: Basic gateway discovery
-ip route | grep default
+# Clone the repository
+git clone https://github.com/yourusername/WiFi-Penetration-Testing-Guide.git
+cd WiFi-Penetration-Testing-Guide
 
-# Step 2: ARP enumeration
-ip neigh show
-
-# Step 3: Layer 2 discovery
-sudo arp-scan -l
-
-# Step 4: Full reconnaissance
-sudo ./network-recon.sh
+# Choose your path:
+cat beginner/README.md      # Start here if new
+cat intermediate/README.md  # If you know aircrack-ng
+cat advanced/README.md      # For security professionals
 ```
 
-The router is typically at:
-- Default gateway IP from `ip route`
-- Lowest MAC in ARP table (often x:x:x:00:01 pattern)
-- DHCP server IP from lease file
+---
+
+## 🗂️ Repository Structure
+
+```
+WiFi-Penetration-Testing-Guide/
+├── beginner/                    # Foundation tier
+│   ├── 01-fundamentals.md      # 802.11 standards, frame types
+│   ├── 02-setup-and-tools.md   # Hardware, Kali, adapter setup
+│   ├── 03-reconnaissance.md    # airodump-ng, target selection
+│   ├── 04-wpa2-attacks.md      # Handshake capture, deauth
+│   ├── 05-wps-attacks.md       # Pixie Dust, reaver
+│   ├── 06-password-cracking.md # hashcat, wordlists, rules
+│   ├── README.md
+│   └── scripts/
+│       ├── auto-recon.sh       # Automated network survey
+│       ├── handshake-capture.sh # WPA2 handshake automation
+│       ├── wps-attack.sh       # WPS vulnerability test
+│       └── auto-crack.sh       # Progressive hashcat pipeline
+│
+├── intermediate/               # Enterprise tier
+│   ├── 01-enterprise-wifi.md   # 802.1X, RADIUS, EAP
+│   ├── 02-eap-attacks.md       # PEAP-MSCHAPv2, rogue AP
+│   ├── 03-evil-twin.md         # hostapd-mana, KARMA
+│   ├── 04-pmkid-attack.md      # Clientless capture
+│   ├── 05-client-attacks.md    # Probe requests, KARMA
+│   ├── 06-post-exploitation.md # Pivoting, reporting
+│   ├── README.md
+│   └── scripts/
+│
+├── advanced/                     # Expert tier
+│   ├── 01-wpa3-dragonblood.md  # SAE side-channels
+│   ├── 02-wifi6-attacks.md     # 802.11ax exploitation
+│   ├── 03-sdr-attacks.md       # HackRF, jamming
+│   ├── 04-mesh-networks.md     # 802.11s attacks
+│   ├── 05-wids-evasion.md      # Signature bypass
+│   ├── 06-multi-vector.md      # Red team chains
+│   ├── 07-exploit-development.md # Scapy fuzzing
+│   └── README.md
+│
+├── synth/                        # Synthetic practice materials
+│   ├── beginner/
+│   ├── intermediate/
+│   └── advanced/
+│
+├── network-recon.sh            # Full network reconnaissance
+├── pentest-methodology.sh      # Complete pentest workflow
+├── diagram-generator.sh        # Topology visualization
+└── README.md                   # This file
+```
 
 ---
 
-## Hardware Requirements
+## 🔒 Legal Notice
 
-| Tool | Required Hardware |
-|------|-------------------|
-| Passive scanning | Any WiFi interface |
-| Monitor mode | USB adapters with supported chipsets |
-| Packet injection | Alfa AWUS036ACM/ACH, TP-Link TL-WN722N v1 |
-| WPS attacks | Same as above |
-| Deauth attacks | Injection-capable adapter required |
+**These tools and techniques are for authorized security testing only.**
 
-Recommended chipsets: MT76x2u, RTL8812AU, AR9271
+### Requirements Before Use
+
+1. ✅ Written authorization from network owner
+2. ✅ Defined scope and target IP ranges
+3. ✅ Approved testing window
+4. ✅ Acknowledgment of legal implications
+
+Unauthorized access to computer networks is illegal under:
+- Computer Fraud and Abuse Act (US)
+- Computer Misuse Act (UK)
+- Similar statutes worldwide
 
 ---
 
-## Dependencies
+## 🛠️ Hardware Requirements
+
+### Essential
+
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| OS | Kali Linux | Kali Linux latest |
+| RAM | 4 GB | 8+ GB |
+| Storage | 20 GB | 50+ GB |
+| WiFi Adapter | Monitor mode capable | Alfa AWUS036ACM |
+
+### Recommended Adapters
+
+| Adapter | Chipset | Bands | Injection |
+|---------|---------|-------|-----------|
+| Alfa AWUS036ACM | MT7612U | 2.4/5 GHz | ✅ |
+| Alfa AWUS036ACH | RTL8812AU | 2.4/5 GHz | ✅ |
+| TP-Link TL-WN722N v1 | AR9271 | 2.4 GHz | ✅ |
+
+---
+
+## 📊 Learning Path
+
+### Beginner Track (Start Here)
+
+```
+01-fundamentals.md → 02-setup-and-tools.md → 03-reconnaissance.md → 
+04-wpa2-attacks.md → 05-wps-attacks.md → 06-password-cracking.md
+```
+
+**Goal**: Capture WPA2 handshake, crack with hashcat, understand WPS vulnerabilities
+
+### Intermediate Track
+
+```
+01-enterprise-wifi.md → 02-eap-attacks.md → 03-evil-twin.md → 
+04-pmkid-attack.md → 05-client-attacks.md → 06-post-exploitation.md
+```
+
+**Goal**: Attack enterprise WiFi, set up rogue APs, capture PMKID
+
+### Advanced Track
+
+```
+01-wpa3-dragonblood.md → 02-wifi6-attacks.md → 03-sdr-attacks.md → 
+04-mesh-networks.md → 05-wids-evasion.md → 06-multi-vector.md → 07-exploit-development.md
+```
+
+**Goal**: WPA3 side-channels, WiFi 6 exploitation, custom tool development
+
+---
+
+## 🧪 Synthetic Practice Materials
+
+Practice without live targets using our synthetic materials:
 
 ```bash
-# Core tools
-sudo apt update
-sudo apt install -y aircrack-ng nftables iproute2
+# Use sample wordlists
+cat synth/beginner/wordlists/top-100-wifi.txt
 
-# Optional but recommended
-sudo apt install -y nmap tcpdump wireshark
+# Practice hashcat on synthetic hashes
+hashcat -a 0 -m 22000 synth/beginner/hashes/practice-target.hc22000 wordlist.txt
 
-# For cracking
-sudo apt install -y hashcat john hcxtools
+# Analyze sample captures
+tshark -r synth/intermediate/captures/sample-eap.pcap
 ```
 
 ---
 
-## Workflow
+## 🤝 Contributing
 
-```
-┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│ 1. Run recon    │ ──► │ 2. Generate      │ ──► │ 3. Analyze      │
-│    script       │     │    diagrams      │     │    topology     │
-└─────────────────┘     └──────────────────┘     └─────────────────┘
-         │                                               │
-         ▼                                               ▼
-┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│ 4. Identify     │ ──► │ 5. Execute       │ ──► │ 6. Document     │
-│    targets      │     │    pentest       │     │    findings     │
-└─────────────────┘     └──────────────────┘     └─────────────────┘
-```
+Contributions welcome! Areas needing help:
+
+- Additional PoC scripts
+- New CVE writeups
+- Translations
+- Bug fixes
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ---
 
-## Notes
+## 📜 License
 
-- All scripts include safety checks and require explicit flags for destructive actions
-- Output is sanitized (no raw passwords in logs)
-- Diagram generator works on partial reconnaissance data
+MIT License - See [LICENSE](LICENSE) for details.
 
-## References
-- wifi-pentest-guide.md: Complete technical reference
-- 802.11 standards documentation
-- aircrack-ng documentation
+---
+
+## 🙏 Acknowledgments
+
+- aircrack-ng team for the foundational tools
+- hashcat team for GPU cracking
+- hostapd-mana and eaphammer contributors
+- Security researchers publishing WiFi vulnerabilities
+
+---
+
+## 📞 Support
+
+- Open an issue for bugs
+- Discussions for questions
+- No support for illegal activities
+
+---
+
+**Start learning**: [Beginner Tier →](beginner/README.md)

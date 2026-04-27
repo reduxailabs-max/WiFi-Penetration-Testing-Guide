@@ -1,0 +1,5 @@
+# Sample hashcat 22000 format for practice
+# Password: password123
+# SSID: PracticeNetwork
+
+WPA*02*8f2d1a3b4c5e6f708192a3b4c5d6e7f8*001122334455*aabbccddeeff*PracticeNetwork*00112233445566778899aabbccddeeff00112233445566778899aabbccddeeff*00112233445566778899aabbccddeeff00112233445566778899aabbccddeeff*00
