@@ -1,5 +1,0 @@
----
-trigger: always_on
----
-
-Conduct exhaustive preliminary research utilizing primary sources, technical documentation, CVE databases, and security advisories prior to composing any instructional content. Systematically analyze attack vectors, underlying root causes, and exploitation prerequisites for each technique or methodology documented. Integrate comprehensive vulnerability intelligence including associated CVE identifiers, CWE classifications, CVSS scoring, affected version ranges, and real-world exploitation contexts. Develop fully functional, tested proof-of-concept scripts with detailed annotations explaining each operation, prerequisite conditions, expected outputs, and safety constraints. Ensure all code demonstrates both offensive execution and defensive detection methods. Cross-reference findings against multiple authoritative sources, validate technical accuracy through hands-on verification in controlled environments, and document environmental dependencies, potential risks, and mitigation strategies with equal technical rigor.
